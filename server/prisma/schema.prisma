@@ -1,0 +1,139 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum EventType {
+  CONFERENCE
+  SEMINAR
+  WORKSHOP
+}
+
+enum TicketType {
+  GENERAL
+  VIP
+}
+
+enum MessageStatus {
+  NEW
+  IN_PROGRESS
+  RESOLVED
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Event {
+  id            String         @id @default(cuid())
+  title         String
+  slug          String         @unique
+  type          EventType
+  category      String
+  description   String         @db.Text
+  startDate     DateTime
+  endDate       DateTime
+  timezone      String         @default("UTC")
+  venueName     String
+  venueAddress  String
+  city          String
+  country       String
+  capacity      Int
+  price         Float          @default(0)
+  isFree        Boolean        @default(true)
+  coverImageUrl String?
+  published     Boolean        @default(true)
+  tags          String[]
+  featured      Boolean        @default(false)
+  sessions      Session[]
+  registrations Registration[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  @@index([startDate])
+  @@index([type])
+  @@index([city])
+}
+
+model Speaker {
+  id           String    @id @default(cuid())
+  name         String
+  title        String
+  company      String
+  bio          String    @db.Text
+  headshotUrl  String?
+  twitter      String?
+  linkedin     String?
+  website      String?
+  expertise    String[]
+  sessions     Session[] @relation("SessionSpeakers")
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Session {
+  id          String    @id @default(cuid())
+  title       String
+  description String    @db.Text
+  startTime   DateTime
+  endTime     DateTime
+  track       String
+  eventId     String
+  event       Event     @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  speakers    Speaker[] @relation("SessionSpeakers")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Registration {
+  id           String     @id @default(cuid())
+  name         String
+  email        String
+  phone        String?
+  organization String?
+  ticketType   TicketType @default(GENERAL)
+  checkedIn    Boolean    @default(false)
+  eventId      String
+  event        Event      @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
+
+model ContactMessage {
+  id        String        @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String        @db.Text
+  status    MessageStatus @default(NEW)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model SiteSettings {
+  id           String @id @default(cuid())
+  siteName     String @default("SummitSphere")
+  contactEmail String @default("info@summitsphere.com")
+  updatedAt    DateTime @updatedAt
+}
