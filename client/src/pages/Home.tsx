@@ -314,7 +314,7 @@ const Home = () => {
 
         .events-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 2rem;
         }
 
@@ -461,7 +461,7 @@ const Home = () => {
         /* New Sections Styles */
         .testimonials-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 2rem;
         }
 
@@ -486,6 +486,7 @@ const Home = () => {
           line-height: 1.6;
           position: relative;
           z-index: 1;
+          margin-top: 1rem;
         }
 
         .testimonial-footer {

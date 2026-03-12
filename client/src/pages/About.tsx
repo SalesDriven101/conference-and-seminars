@@ -189,6 +189,15 @@ const About = () => {
           .values-grid { grid-template-columns: 1fr; }
           .about-hero h1 { font-size: 3rem; }
         }
+
+        @media (max-width: 768px) {
+          .cta-box {
+            padding: 3rem 1.5rem;
+          }
+          .cta-box h2 {
+            font-size: 2.2rem;
+          }
+        }
       `}</style>
     </div>
   );

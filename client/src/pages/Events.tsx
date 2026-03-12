@@ -304,7 +304,7 @@ const Events = () => {
 
         .events-list {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
           gap: 2rem;
         }
 
@@ -315,11 +315,12 @@ const Events = () => {
         }
 
         .event-item-img {
-          width: 200px;
+          width: 250px; /* Increased slightly for desktop */
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
           min-height: 100%;
+          flex-shrink: 0;
         }
 
         .event-item-content {
@@ -360,6 +361,7 @@ const Events = () => {
           font-size: 0.85rem;
           color: var(--text-muted);
           margin-bottom: 1.5rem;
+          flex-wrap: wrap; /* Let details wrap */
         }
 
         .event-item-details span {
@@ -372,11 +374,14 @@ const Events = () => {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          flex-wrap: wrap; /* Let footer wrap */
+          gap: 1rem;
         }
 
         .btn-sm {
           padding: 0.6rem 1.2rem;
           font-size: 0.9rem;
+          white-space: nowrap;
         }
 
         @media (max-width: 1024px) {
@@ -385,9 +390,11 @@ const Events = () => {
 
         @media (max-width: 600px) {
           .event-item { flex-direction: column; }
-          .event-item-img { width: 100%; height: 150px; }
-          .filters-bar { flex-direction: column; align-items: stretch; }
-          .search-box { min-width: 100%; }
+          .event-item-img { width: 100%; height: 200px; }
+          .filters-bar { flex-direction: column; align-items: stretch; gap: 1rem; padding: 1rem; }
+          .search-box { min-width: 0; width: 100%; }
+          .category-filters { padding-bottom: 10px; }
+          .results-info { flex-direction: column; align-items: flex-start; gap: 1rem; }
         }
 
         /* Growth Section Styles */
