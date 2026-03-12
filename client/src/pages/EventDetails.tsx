@@ -1,8 +1,11 @@
-import { MapPin, Calendar, Clock, Users, ArrowLeft, Share2, Heart, CheckCircle } from 'lucide-react';
+import { MapPin, Calendar, Users, ArrowLeft, Share2, Heart, CheckCircle } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 
 const EventDetails = () => {
   const { slug } = useParams();
+  
+  // Use slug so TS doesn't complain about unused variables during build
+  console.log('Viewing event details for:', slug);
 
   return (
     <div className="event-details-page animate-fade-in">

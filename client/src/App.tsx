@@ -13,11 +13,14 @@ import AdminDashboard from './pages/AdminDashboard';
 import Login from './pages/Login';
 
 const ProtectedRoute = ({ children, adminOnly = false }: { children: React.ReactNode, adminOnly?: boolean }) => {
-  const { user, loading } = useAuth();
+  const { user, profile, loading } = useAuth();
   
   if (loading) return <Loading />;
   if (!user) return <Navigate to="/login" />;
-  if (adminOnly && user.role !== 'ADMIN') return <Navigate to="/" />;
+  
+  if (adminOnly && profile?.role !== 'ADMIN') {
+    return <Navigate to="/" />;
+  }
   
   return <>{children}</>;
 };
