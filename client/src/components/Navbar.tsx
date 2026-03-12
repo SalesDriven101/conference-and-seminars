@@ -283,6 +283,10 @@ const Navbar = () => {
         }
 
         @media (max-width: 768px) {
+          .nav-container {
+            width: 100%;
+            padding: 0 1.5rem;
+          }
           .nav-links { display: none; }
           .mobile-toggle { display: block; }
           
