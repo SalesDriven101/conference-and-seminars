@@ -462,8 +462,12 @@ const Speakers = () => {
         }
 
         @media (max-width: 768px) {
-          .speaker-form-box { padding: 2rem; }
-          .form-grid { grid-template-columns: 1fr; }
+          .speaker-form-box { padding: 2rem 1.5rem; }
+          .form-grid { grid-template-columns: 1fr; gap: 0; }
+          .speakers-search { padding: 1rem; width: 100%; border-radius: 12px; }
+          .speaker-card { margin-bottom: 2rem; }
+          .speaker-info { padding: 1.5rem; }
+          .btn { width: 100%; justify-content: center; }
         }
       `}</style>
     </div>

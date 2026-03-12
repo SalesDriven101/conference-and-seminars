@@ -167,7 +167,13 @@ const Contact = () => {
         }
 
         @media (max-width: 900px) {
-          .contact-grid { grid-template-columns: 1fr; }
+          .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+        @media (max-width: 600px) {
+          .contact-form-container { padding: 1.5rem; }
+          .contact-card { padding: 1.5rem; }
+          .page-header h1 { font-size: 2.2rem; }
+          .success-icon { width: 60px; height: 60px; font-size: 2rem; }
         }
       `}</style>
     </div>

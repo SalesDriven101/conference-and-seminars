@@ -428,10 +428,13 @@ const Home = () => {
         }
 
         @media (max-width: 768px) {
-          .hero h1 { font-size: 2.5rem; }
-          .hero-actions { flex-direction: column; }
+          .hero h1 { font-size: 2.2rem; }
+          .hero p { font-size: 1rem; }
+          .hero-actions { flex-direction: column; width: 100%; }
+          .hero-actions .btn { width: 100%; justify-content: center; text-align: center; }
           .feature-grid { grid-template-columns: 1fr; }
-          .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+          .hero-stats { flex-direction: column; align-items: flex-start; gap: 1rem; }
+          .section-header h2 { font-size: 2rem; }
         }
 
         /* New Sections Styles */

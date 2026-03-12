@@ -75,6 +75,12 @@ ul {
   padding: 4rem 4rem;
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 1.5rem;
+  }
+}
+
 /* Glassmorphism Utility */
 .glass {
   background: var(--glass);

@@ -380,6 +380,16 @@ const EventDetails = () => {
           .event-hero-grid { grid-template-columns: 1fr; }
           .event-body-grid { grid-template-columns: 1fr; }
         }
+
+        @media (max-width: 600px) {
+          .event-hero-content h1 { font-size: 2.2rem; }
+          .event-key-info { flex-direction: column; gap: 1.5rem; }
+          .schedule-item { flex-direction: column; gap: 0.5rem; }
+          .schedule-time { width: auto; padding-top: 0; margin-bottom: 0.5rem; }
+          .schedule-info { padding: 1.5rem; }
+          .card-actions { flex-direction: column; }
+          .registration-card { padding: 1.5rem; }
+        }
       `}</style>
     </div>
   );
