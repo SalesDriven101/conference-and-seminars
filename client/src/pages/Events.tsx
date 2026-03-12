@@ -262,8 +262,7 @@ const Events = () => {
         .category-filters {
           display: flex;
           gap: 0.8rem;
-          overflow-x: auto;
-          padding-bottom: 5px;
+          flex-wrap: wrap;
         }
 
         .filter-btn {
@@ -315,11 +314,11 @@ const Events = () => {
         }
 
         .event-item-img {
-          width: 250px; /* Increased slightly for desktop */
+          width: 250px;
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
-          min-height: 100%;
+          min-height: 250px;
           flex-shrink: 0;
         }
 
@@ -361,7 +360,7 @@ const Events = () => {
           font-size: 0.85rem;
           color: var(--text-muted);
           margin-bottom: 1.5rem;
-          flex-wrap: wrap; /* Let details wrap */
+          flex-wrap: wrap;
         }
 
         .event-item-details span {
@@ -374,7 +373,7 @@ const Events = () => {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          flex-wrap: wrap; /* Let footer wrap */
+          flex-wrap: wrap;
           gap: 1rem;
         }
 
@@ -390,10 +389,9 @@ const Events = () => {
 
         @media (max-width: 600px) {
           .event-item { flex-direction: column; }
-          .event-item-img { width: 100%; height: 200px; }
+          .event-item-img { width: 100%; height: 200px; min-height: 200px; }
           .filters-bar { flex-direction: column; align-items: stretch; gap: 1rem; padding: 1rem; }
-          .search-box { min-width: 0; width: 100%; }
-          .category-filters { padding-bottom: 10px; }
+          .search-box { width: 100%; }
           .results-info { flex-direction: column; align-items: flex-start; gap: 1rem; }
         }
 
